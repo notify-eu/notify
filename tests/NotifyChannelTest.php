@@ -23,7 +23,7 @@ class NotifyChannelTest extends TestCase
         $this->emptyNotifiable = new EmptyTestNotifiable();
         $this->guzzle = Mockery::mock(new Client());
         $this->dispatcher = Mockery::mock(new Dispatcher());
-        $this->client = Mockery::mock(new NotifyClient($this->guzzle, array()));
+        $this->client = Mockery::mock(new NotifyClient($this->guzzle, []));
         $this->channel = new NotifyChannel($this->client, $this->dispatcher);
     }
 

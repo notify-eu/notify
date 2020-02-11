@@ -3,9 +3,9 @@
 namespace Notify;
 
 use Exception;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Events\Dispatcher;
 use Notify\Exceptions\InvalidMessageObject;
 
 class NotifyChannel
