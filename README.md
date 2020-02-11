@@ -1,15 +1,14 @@
-# Notify notifications channel for Laravel 5.6+ & 6.x
+# Notify notifications channel for Laravel 5.7+ & 6.x
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/notify-eu.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/notify-eu)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/notify-eu/notify.svg?style=flat-square)](https://packagist.org/packages/notify-eu/notify)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/laravel-notification-channels/notify-eu/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/notify-eu)
+[![Build Status](https://img.shields.io/travis/notify-eu/notify/master.svg?style=flat-square)](https://travis-ci.org/notify-eu/notify)
 [![StyleCI](https://styleci.io/repos/:style_ci_id/shield)](https://styleci.io/repos/:style_ci_id)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/:sensio_labs_id.svg?style=flat-square)](https://insight.sensiolabs.com/projects/:sensio_labs_id)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/notify-eu.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/notify-eu)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/notify-eu/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/notify-eu/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/notify-eu.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/notify-eu)
+[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/notify-eu.svg?style=flat-square)](https://scrutinizer-ci.com/g/notify-eu/notify)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/notify-eu/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/notify-eu/notify/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/notify-eu/notify.svg?style=flat-square)](https://packagist.org/packages/laravel-notify-eu/notify)
 
-This package makes it easy to send notifications using [Notify](https://notify.eu) with Laravel 5.6+ & 6.x
+This package makes it easy to send notifications using [Notify](https://notify.eu) with Laravel 5.7+ & 6.x
 
 ## Contents
 
@@ -29,7 +28,7 @@ This package makes it easy to send notifications using [Notify](https://notify.e
 You can install the package via composer:
 
 ```bash
-$ composer require laravel-notification-channels/notify-eu
+$ composer require notify-eu/notify
 ```
 
 ### Setting up your Notify account
@@ -71,8 +70,8 @@ Now you can use the channel in your `via()` method inside the notification:
 ``` php
 use App\User;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Notify\NotifyChannel;
-use NotificationChannels\Notify\NotifyMessage;
+use Notify\NotifyChannel;
+use Notify\NotifyMessage;
 
 class InvoicePaid extends Notification
 {
@@ -188,7 +187,7 @@ use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
-use NotificationChannels\Notify\NotifyChannel;
+use Notify\NotifyChannel;
 	
 class NotificationFailedListener
 {

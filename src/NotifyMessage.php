@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\Notify;
+namespace Notify;
 
 use JsonSerializable;
 

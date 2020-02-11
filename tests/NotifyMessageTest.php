@@ -1,8 +1,8 @@
 <?php
 
-namespace NotificationChannels\Notify\Test;
+namespace Notify\Test;
 
-use NotificationChannels\Notify\NotifyMessage;
+use Notify\NotifyMessage;
 use Orchestra\Testbench\TestCase;
 
 class NotifyMessageTest extends TestCase

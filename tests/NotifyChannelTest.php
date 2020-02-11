@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\Notify\Test;
+namespace Notify\Test;
 
 use GuzzleHttp\Client;
 use Illuminate\Events\Dispatcher;
@@ -9,9 +9,9 @@ use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 use Mockery;
-use NotificationChannels\Notify\NotifyChannel;
-use NotificationChannels\Notify\NotifyClient;
-use NotificationChannels\Notify\NotifyMessage;
+use Notify\NotifyChannel;
+use Notify\NotifyClient;
+use Notify\NotifyMessage;
 use Orchestra\Testbench\TestCase;
 
 class NotifyChannelTest extends TestCase
@@ -23,7 +23,7 @@ class NotifyChannelTest extends TestCase
         $this->emptyNotifiable = new EmptyTestNotifiable();
         $this->guzzle = Mockery::mock(new Client());
         $this->dispatcher = Mockery::mock(new Dispatcher());
-        $this->client = Mockery::mock(new NotifyClient($this->guzzle));
+        $this->client = Mockery::mock(new NotifyClient($this->guzzle, array()));
         $this->channel = new NotifyChannel($this->client, $this->dispatcher);
     }
 
@@ -43,7 +43,7 @@ class NotifyChannelTest extends TestCase
     /** @test */
     public function it_will_not_send_a_message_without_known_recipient()
     {
-        $this->dispatcher->shouldReceive('fire')
+        $this->dispatcher->shouldReceive('dispatch')
             ->atLeast()->once()
             ->with(Mockery::type(NotificationFailed::class));
         $result = $this->channel->send($this->emptyNotifiable, $this->notification);
@@ -56,7 +56,7 @@ class NotifyChannelTest extends TestCase
         $notification = Mockery::mock(Notification::class);
         // Invalid message
         $notification->shouldReceive('toNotify')->andReturn(-1);
-        $this->dispatcher->shouldReceive('fire')
+        $this->dispatcher->shouldReceive('dispatch')
             ->atLeast()->once()
             ->with(Mockery::type(NotificationFailed::class));
         $result = $this->channel->send($this->emptyNotifiable, $notification);

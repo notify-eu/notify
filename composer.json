@@ -1,5 +1,5 @@
 {
-    "name": "laravel-notification-channels/notify-eu",
+    "name": "notify-eu/notify",
     "description": "Notify Notifications driver for Laravel",
     "keywords": [
         "laravel",
@@ -7,7 +7,7 @@
         "notification",
         "notify notifications channel"
     ],
-    "homepage": "https://github.com/laravel-notification-channels/notify-eu",
+    "homepage": "https://github.com/notify-eu",
     "license": "MIT",
     "authors": [
         {
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "NotificationChannels\\Notify\\": "src"
+            "\\Notify\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "NotificationChannels\\Notify\\Test\\": "tests"
+            "\\Notify\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NotificationChannels\\Notify\\NotifyServiceProvider"
+                "\\Notify\\NotifyServiceProvider"
             ]
         }
     }

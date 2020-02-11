@@ -1,13 +1,13 @@
 <?php
 
-namespace NotificationChannels\Notify;
+namespace Notify;
 
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use NotificationChannels\Notify\Exceptions\CouldNotSendNotification;
-use NotificationChannels\Notify\Exceptions\InvalidConfiguration;
-use NotificationChannels\Notify\Exceptions\InvalidMessageObject;
+use Notify\Exceptions\CouldNotSendNotification;
+use Notify\Exceptions\InvalidConfiguration;
+use Notify\Exceptions\InvalidMessageObject;
 
 class NotifyClient
 {

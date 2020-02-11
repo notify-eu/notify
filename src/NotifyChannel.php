@@ -1,20 +1,25 @@
 <?php
 
-namespace NotificationChannels\Notify;
+namespace Notify;
 
 use Exception;
 use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Notify\Exceptions\InvalidMessageObject;
+use Illuminate\Contracts\Events\Dispatcher;
+use Notify\Exceptions\InvalidMessageObject;
 
 class NotifyChannel
 {
-    /** @var \NotificationChannels\Notify\NotifyClient */
+    /** @var NotifyClient */
     protected $client;
 
-    public function __construct(NotifyClient $client)
+    /** @var Dispatcher */
+    protected $events;
+
+    public function __construct(NotifyClient $client, Dispatcher $events)
     {
         $this->client = $client;
+        $this->events = $events;
     }
 
     /**
@@ -23,12 +28,12 @@ class NotifyChannel
      * @param mixed $notifiable
      * @param Notification $notification
      *
-     * @throws \NotificationChannels\notify\Exceptions\CouldNotSendNotification
+     * @throws \notify\Exceptions\CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)
     {
         try {
-            /** @var $message \NotificationChannels\Notify\NotifyMessage */
+            /** @var $message NotifyMessage */
             $message = $notification->toNotify($notifiable);
             if ($to = $this->getTo($notifiable)) {
                 $message->addRecipient($to['name'], $to['recipient']);
@@ -42,7 +47,8 @@ class NotifyChannel
                 get_class($this),
                 ['message' => $exception->getMessage()]
             );
-            event($event);
+
+            $this->events->dispatch($event);
         }
     }
 

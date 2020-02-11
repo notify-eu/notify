@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `laravel-notification-channels/notify-eu` will be documented in this file
+All notable changes to `notify-eu/notify` will be documented in this file
 
 ## 1.0.0 - 2019-08-05
 
@@ -14,3 +14,7 @@ All notable changes to `laravel-notification-channels/notify-eu` will be documen
 
 - Update readme
 - event trigger NotificationFailed changes
+
+## 1.0.2 - 2020-02-11
+
+- Change namespace
